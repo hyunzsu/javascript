@@ -3,13 +3,14 @@
 /* ---------------------------------------------------------------------- */
 
 /* 데이터 → 문자 ----------------------------------------------------------- */
-/* String() */
-// number
+/* String() / 'string' + '' */
+// number -> '2022'
 const YEAR = 2022;
 console.log(YEAR);
 console.log(String(YEAR));
 
-// undefined, null
+// undefined -> 'undefined'
+// null -> 'null'
 console.log(String(undefined));
 console.log(String(null));
 
@@ -50,7 +51,7 @@ console.log(parseFloat(width2, 10)); // 32.2132434
 
 /* 데이터 → 불리언 ---------------------------------------------------------- */
 
-// null, undefined, 0, NaN, ''
+// null, undefined, 0, NaN, '' -> false
 // 위에 나열한 것 이외의 것들
 
 console.log(Boolean('0')); // true

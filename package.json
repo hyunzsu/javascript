@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "npx live-server client --host=localhost --port=5500 --no-browser"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "live-server": "^1.2.2"
+  }
+}

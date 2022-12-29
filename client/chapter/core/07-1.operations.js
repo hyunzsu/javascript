@@ -63,6 +63,7 @@ let number = 100;
 // 선,후 증감 연산자
 // ++, --
 number++; // 100
+++number;
 console.log(number);
 
 // 아래 코드를 읽기 쉽도록 변경합니다.

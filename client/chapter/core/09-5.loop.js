@@ -103,6 +103,59 @@ const randomUser = {
 // 객체의 키, 값 순환
 // - for ~ in 문
 // - for ~ of 문
+for (let key in randomUser) {
+  let L1 = randomUser[key];
+  // console.log('L1 : ', key);
+
+  if ({}.hasOwnProperty.call(randomUser, key)) {
+    if (typeof L1 === 'object') {
+      for (let key in L1) {
+        let L2 = L1[key];
+        // console.log('\t L2 : ', key);
+        if ({}.hasOwnProperty.call(L1, key)) {
+          if (typeof L2 === 'object') {
+            if ({}.hasOwnProperty.call(L2, key)) {
+              for (let key in L2) {
+                let L3 = L2[key];
+                // console.log('\t\t L3 : ', key);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 
+  Object.entries
+  Object.keys
+  Object.values
+ */
+
+for (let key of Object.keys(randomUser)) {
+  // console.log(key);
+}
+
+for (let value of Object.values(randomUser)) {
+  // console.log(value);
+}
+
+for (let keyValue of Object.entries(randomUser)) {
+  let key = keyValue[0];
+  let value = keyValue[1];
+
+  console.log('L1 : ', key);
+
+  if (typeof value === 'object') {
+    for (let keyValue of Object.entries(value)) {
+      let key = keyValue[0];
+      let value = keyValue[1];
+
+      console.log('\t L2 : ', key);
+    }
+  }
+}
 
 // - 성능 비교 진단
 

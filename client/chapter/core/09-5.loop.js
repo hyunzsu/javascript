@@ -103,21 +103,23 @@ const randomUser = {
 // 객체의 키, 값 순환
 // - for ~ in 문
 // - for ~ of 문
-for (let key in randomUser) {
-  let L1 = randomUser[key];
-  // console.log('L1 : ', key);
+// - 성능 비교 진단
 
-  if ({}.hasOwnProperty.call(randomUser, key)) {
+for (let value in randomUser) {
+  if (Object.prototype.hasOwnProperty.call(randomUser, value)) {
+    const L1 = randomUser[value];
+    console.log('Level 1 : ' + value);
+
     if (typeof L1 === 'object') {
-      for (let key in L1) {
-        let L2 = L1[key];
-        // console.log('\t L2 : ', key);
-        if ({}.hasOwnProperty.call(L1, key)) {
+      for (let value in L1) {
+        if (Object.prototype.hasOwnProperty.call(L1, value)) {
+          const L2 = L1[value];
+          console.log('\tLevel 2 : ' + value);
           if (typeof L2 === 'object') {
-            if ({}.hasOwnProperty.call(L2, key)) {
-              for (let key in L2) {
-                let L3 = L2[key];
-                // console.log('\t\t L3 : ', key);
+            for (let value in L2) {
+              if (Object.prototype.hasOwnProperty.call(L2, value)) {
+                const L3 = L2[value];
+                console.log('\t\tLevel 3 : ' + value);
               }
             }
           }
@@ -126,20 +128,21 @@ for (let key in randomUser) {
     }
   }
 }
-
 /* 
-  Object.entries
-  Object.keys
-  Object.values
+Object.keys
+Object.values
+Object.entries
  */
 
-for (let key of Object.keys(randomUser)) {
-  // console.log(key);
+// console.log(Object.values(randomUser));
+/* 
+for(let key of Object.keys(randomUser)){
+  console.log(key);
 }
-
-for (let value of Object.values(randomUser)) {
-  // console.log(value);
+for(let values of Object.values(randomUser)){
+  console.log(values);
 }
+ */
 
 for (let keyValue of Object.entries(randomUser)) {
   let key = keyValue[0];
@@ -156,11 +159,3 @@ for (let keyValue of Object.entries(randomUser)) {
     }
   }
 }
-
-// - 성능 비교 진단
-
-/* 
-  Object.entries
-  Object.keys
-  Object.values
- */

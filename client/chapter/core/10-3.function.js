@@ -41,7 +41,36 @@ let calcAllMoney = (a, b, c, d) => {
 /* 다음 함수를 작성해봅니다. -------------------------------------------------- */
 
 // pow(numeric: number, powerCount: number): number;
-let pow;
+let pow = (numeric, powerCount) => {
+  let result = 1;
+  for (let i = 0; i < powerCount; i++) {
+    result += numeric;
+  }
+  return result;
+};
+
+let powExpression = (numeric, powerCount) => {
+  return Array(powerCount)
+    .fill(null)
+    .reduce((acc) => acc * numeric, 1);
+};
+
+// let powExpression = (numeric, powerCount) => Array(powerCount).fill(null).reduce(acc => acc * numeric, 1)
+let result = powExpression(2, 53);
 
 // repeat(text: string, repeatCount: number): string;
-let repeat;
+let repeat = (text, repeatCount) => {
+  let result = '';
+  for (let i = 0; i < repeatCount; i++) {
+    result += text;
+  }
+  return result;
+};
+
+let repeatExpression = (text, repeatCount) => {
+  return Array(repeatExpression)
+    .fill(null)
+    .reduce((acc) => (acc + text, ''));
+};
+
+// repeat('hello', 3) // 'hellohellohello'

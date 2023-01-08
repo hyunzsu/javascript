@@ -40,14 +40,13 @@ function calcPrice( // 함수 선언
 ) {
   // validation
 
-  /*   if(!priceC){
+  /* if(!priceC){
     priceC = 0;
   }
-  
   if(!priceD){
     priceD = 0;
   }
-   */
+  */
 
   if (!priceA || !priceB) {
     throw new Error(
@@ -79,11 +78,16 @@ function rem(pxValue, base = 16) {
   //   pxValue = parseInt(pxValue, 10);
   // }
   typeof base === 'string' && (base = parseInt(base, 10));
-  // if (typeof pxValue === 'string') {
-  //   pxValue = parseInt(base, 10);
+  // if (typeof base === 'string') {
+  //   base = parseInt(base, 10);
   // }
   return `${pxValue / base}rem`;
 }
+
+console.log(rem(20));
+console.log(rem('30px'));
+console.log(rem('56px', 10));
+console.log(rem('56px', '14px'));
 
 /* 
   1. function name
@@ -92,11 +96,6 @@ function rem(pxValue, base = 16) {
   4. parameter, argument
   5. test  [Test Driven Development]
 */
-
-console.log(rem(20));
-console.log(rem('30px'));
-console.log(rem('56px', 10));
-console.log(rem('56px', '14px'));
 
 // 테스트
 // console.asserts(rem(20) === '1.25rem');

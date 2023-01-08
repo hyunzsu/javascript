@@ -36,16 +36,18 @@ for (let key in javaScript) {
   }
 }
 
+// Function.prototype.call() 예시
 const user = {
   name: 'tiger',
   age: 32,
 };
 
 function hello(a, b, c) {
-  console.log(a, b, c);
-  console.log(this);
+  console.log(a, b, c); // 1 2 3
+  console.log(this); // {name: 'tiger', age: 32}
 }
 
+// hello가 가리키는 대상은 user라는 객체로 하고, hello 함수에는 1,2,3을 차례대로 넘기겠다.
 hello.call(user, 1, 2, 3);
 
 // for ~ in 문

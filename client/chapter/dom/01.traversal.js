@@ -27,7 +27,8 @@
 // - closest
 
 // let first = document.querySelector('.first');
-let span = document.querySelectorAll('.span');
+// let span = document.querySelectorAll('.span');
+let [first, second] = document.querySelectorAll('span');
 
 // console.log(second);
 
@@ -38,13 +39,23 @@ let span = document.querySelectorAll('.span');
 console.log(getNode('.first'));
 
 /* 문서 대상 확인 */
-// - matches, 대상이 갖고있는 class만 찾게?
-// 선택자 안에 class || id를 가지고 있는 대상이 있어?
+// - matches
+//            선택자 안에  class || id 를 가지고 있는 대상이 있어?
 console.log(getNode('.first').matches('.first'));
-
 // - contains
-// 선택자의 자식들 중에 해당 element가 있어?
+
+//              선택자의 자식들 중에 해당 element가 있어?
 console.log(getNode('h1').contains(getNode('.first')));
 
-// matches : 안에 매칭되어있는 게 맞는지 확인
-// contains : 부모 안에 자식이 있는지 물어보는 기능
+let first = getNode('.first');
+
+let clicked = false;
+document.addEventListener('click', () => {
+  if (first.classList.contains('first') && !clicked) {
+    first.classList.add('is-active');
+  } else {
+    first.classList.remove('is-active');
+  }
+
+  clicked = !clicked;
+});

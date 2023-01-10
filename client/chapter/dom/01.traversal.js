@@ -30,24 +30,24 @@
 // let span = document.querySelectorAll('.span');
 let [first, second] = document.querySelectorAll('span');
 
-// console.log(second);
+// console.log(second); // <span class="second">world</span>
 
 // function getNode(node) {
 //   return document.querySelector(node);
 // }
 
-console.log(getNode('.first'));
+// console.log(getNode('.first'));
 
 /* 문서 대상 확인 */
 // - matches
-//            선택자 안에  class || id 를 가지고 있는 대상이 있어?
-console.log(getNode('.first').matches('.first'));
+// 선택자 안에  class || id 를 가지고 있는 대상이 있어?
+console.log(getNode('.first').matches('.first')); // true
 // - contains
 
-//              선택자의 자식들 중에 해당 element가 있어?
-console.log(getNode('h1').contains(getNode('.first')));
+// 선택자의 자식들 중에 해당 element가 있어?
+console.log(getNode('h1').contains(getNode('.first'))); // true
 
-let first = getNode('.first');
+// let first = getNode('.first');
 
 let clicked = false;
 document.addEventListener('click', () => {

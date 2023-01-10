@@ -45,7 +45,8 @@ first.innerHTML = ''; // 다 날라가버림
 first.innerHTML += '<strong>like lion</strong>';
 
 // - textContent
-console.log(first.textContent); // get
+// get
+console.log(first.textContent); // like lion
 
 // * 요소 내의 텍스트에 접근
 // * 태그는 제외하고 오로지 텍스트만 추출

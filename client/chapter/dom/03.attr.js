@@ -42,7 +42,7 @@ console.log(first.attributes); // {0: class, 1: id, class: class, id: id, lengt
 
 // for of 를 쓸 수 있나 없나?
 for (let value of first.attributes) {
-  // console.log(value);
+  console.log(value);
 }
 
 for (let i = 0; i < first.attributes.length; i++) {

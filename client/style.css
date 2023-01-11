@@ -16,3 +16,44 @@ h1 {
   text-align: center;
   /* translate(-50%, -50%) */
 }
+
+.ground {
+  width: 600px;
+  height: 400px;
+  background: greenyellow;
+  border: 10px solid black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ball {
+  transition: all 0.3s;
+  pointer-events: none; /* 클릭하면 공이 원래 자리로 갔던 문제 해결하려고 넣음 */
+}
+
+.visual {
+  padding: 1.5rem;
+  background-color: dodgerblue;
+}
+
+.news {
+  padding: 1rem;
+  background-color: orange;
+}
+
+.desc {
+  padding: 1rem;
+  background-color: hotpink;
+}
+
+.pop {
+  width: 30vw;
+  height: 30vw;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}

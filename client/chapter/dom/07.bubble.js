@@ -32,7 +32,7 @@ desc.addEventListener('click', function () {
   // console.log('%c desc', 'background-color:hotpink');
 });
 
-// 어떻게 내가 원하는 p만 찍을거냐?
+// 어떻게 내가 원하는 p만 찍을거냐??
 desc.addEventListener('click', function (e) {
   e.stopPropagation();
   // console.log('%c desc', 'background-color:hotpink');

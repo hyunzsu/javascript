@@ -13,4 +13,6 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
   },
+  eslint no-undef:'warn',
+  eslint no-unused-vars: 'off' 
 };

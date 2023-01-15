@@ -20,7 +20,7 @@ const ball = getNode('.ball');
 function handler() {
   console.log('hit!');
 
-  css('.second', 'display', 'none');
+  // css('.second', 'display', 'none');
 }
 first.addEventListener('click', handler);
 
@@ -29,8 +29,7 @@ first.addEventListener('click', handler);
 ground.addEventListener('click', function (e) {
   console.log(e.offsetX, e.offsetY);
 
-  ball.style.transform = `translate(${e.offsetX - ball.offsetWidth / 2}px,
-  ${e.offsetY - ball.offsetHeight / 2}px)`;
+  ball.style.transform = `translate(${e.offsetX - ball.offsetWidth / 2}px, ${e.offsetY - ball.offsetHeight / 2}px)`;
 });
 
 ground.addEventListener('mousemove', function (e) {

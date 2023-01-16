@@ -11,10 +11,12 @@
 // 4. visible 활성 유틸 함수 만들기
 // 5. toggleState 유틸 함수 만들기 
 
+// [ 레코드 템플릿 뿌리기]
 
 
 
-import { diceAnimation, disableElement, enableElement, getNode, getNodes, invisibleElement, visibleElement } from './lib/index.js';
+
+import { diceAnimation, disableElement, enableElement, getNode, getNodes, insertLast, invisibleElement, visibleElement } from './lib/index.js';
 
 // (11) 배열의 구조 분해 할당
 const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
@@ -24,6 +26,23 @@ const recordButton = getNode('.buttonGroup > button:nth-child(2)'); // (9) 기�
 const resetButton = getNode('.buttonGroup > button:nth-child(3)'); */
 
 const recordListWrapper = getNode('.recordListWrapper')
+
+function renderRecordListItem() {
+  let template = /* html */ `
+  <tr>
+    <td>0</td>
+    <td>5</td>
+    <td>5</td>
+  </tr> 
+`
+  insertLast('.recordListWrapper tbody', template)
+}
+
+
+
+
+
+
 
 // (2) 이벤트핸들러 연결
 const handlerRollingDice = (() => {
@@ -49,10 +68,15 @@ const handlerRollingDice = (() => {
 
 })() // (8) IIFE 사용
 
-// (13)
+
+
+
+
+// (13) 
 const handelRecord = () => {
 
   visibleElement(recordListWrapper)
+  renderRecordListItem();
 
 }
 

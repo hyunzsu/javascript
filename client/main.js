@@ -17,7 +17,6 @@
 // 3. 템플릿 뿌리기 
 
 
-
 import { attr, clearContents, diceAnimation, disableElement, enableElement, getNode, getNodes, insertLast, invisibleElement, visibleElement } from './lib/index.js';
 
 // (11) 배열의 구조 분해 할당
@@ -30,6 +29,10 @@ const resetButton = getNode('.buttonGroup > button:nth-child(3)'); */
 const recordListWrapper = getNode('.recordListWrapper')
 
 // 특정 대상의 속성값을 가져오거나 / 설정할 수 있는 함수
+
+/* -------------------------------------------------------------------------- */
+/* render                                                                     */
+/* -------------------------------------------------------------------------- */
 
 let count = 0;
 let total = 0;
@@ -50,9 +53,9 @@ function renderRecordListItem() {
 }
 
 
-
-
-
+/* -------------------------------------------------------------------------- */
+/* event                                                                      */
+/* -------------------------------------------------------------------------- */
 
 // (2) 이벤트핸들러 연결
 const handlerRollingDice = (() => {
@@ -77,7 +80,6 @@ const handlerRollingDice = (() => {
 
 
 })() // (8) IIFE 사용
-
 
 
 

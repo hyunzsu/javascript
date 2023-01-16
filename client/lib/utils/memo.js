@@ -29,5 +29,5 @@ const memo = () => {
 // memo('name', 'tiger');
 
 
-memo()('cube', () => document.querySelector('#cube'));
-console.log(memo()('name', () => 'tiger'));
+// memo()('cube', () => document.querySelector('#cube'));
+// console.log(memo()('name', () => 'tiger'));

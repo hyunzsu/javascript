@@ -3,9 +3,7 @@ import { attr } from "../dom/attr.js";
 import { getNode } from '../dom/getNode.js'
 
 
-// const cube = getNode('#cube');
-memo('cube', () => {getNode('#cube')})
-
+const cube = getNode('#cube');
 
 
 let random;

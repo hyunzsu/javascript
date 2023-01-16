@@ -14,7 +14,7 @@
 
 
 
-import { diceAnimation, disableElement, enableElement, getNode, getNodes } from './lib/index.js';
+import { diceAnimation, disableElement, enableElement, getNode, getNodes, invisibleElement, visibleElement } from './lib/index.js';
 
 // (11) 배열의 구조 분해 할당
 const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
@@ -23,6 +23,7 @@ const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > 
 const recordButton = getNode('.buttonGroup > button:nth-child(2)'); // (9) 기록 버튼 변수설정
 const resetButton = getNode('.buttonGroup > button:nth-child(3)'); */
 
+const recordListWrapper = getNode('.recordListWrapper')
 
 // (2) 이벤트핸들러 연결
 const handlerRollingDice = (() => {
@@ -48,5 +49,20 @@ const handlerRollingDice = (() => {
 
 })() // (8) IIFE 사용
 
+// (13)
+const handelRecord = () => {
+
+  visibleElement(recordListWrapper)
+
+}
+
+// (14)
+const handleReset = () => {
+
+  invisibleElement(recordListWrapper)
+
+}
 
 rollingDiceButton.addEventListener('click', handlerRollingDice); // (2) (8)
+recordButton.addEventListener('click', handelRecord); // (13) 기록버튼 눌렀을 때
+resetButton.addEventListener('click', handleReset) // (14) 초기화버튼 눌렀을 때

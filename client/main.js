@@ -14,7 +14,7 @@
 
 
 
-import { diceAnimation, getNode, getNodes } from './lib/index.js';
+import { diceAnimation, disableElement, enableElement, getNode, getNodes } from './lib/index.js';
 
 // (11) 배열의 구조 분해 할당
 const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
@@ -33,10 +33,12 @@ const handlerRollingDice = (() => {
   return () => { // (7) 보호하기 위해 클로저 사용
     if(!isRolling) {
       stopAnimation = setInterval(diceAnimation,100) // (3) 애니메이션 구현해놓은거 연결
-      recordButton.disabled = true; // (10) hidden 느낌, 값을 제어할 수 있음
+      disableElement(recordButton) // (12) disable 유틸함수 사용
+      disableElement(resetButton)
     } else{
       clearInterval(stopAnimation); // (5) 지울 수 있음. 아이디 값 받아서, 그 아이디 값을 받아서 필요할 때 종료시킬 수 있음
-      recordButton.disabled = false;
+      enableElement(recordButton) // (12) enable 유틸함수 사용
+      enableElement(resetButton)
     }
   
     isRolling = !isRolling; // 현재 false 그러고 true로 바뀜, 다시 클릭하면 else문 실행, 또 반전 false

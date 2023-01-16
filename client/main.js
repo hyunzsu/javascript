@@ -12,11 +12,13 @@
 // 5. toggleState 유틸 함수 만들기 
 
 // [ 레코드 템플릿 뿌리기]
+// 1. renderRecordListItem 함수 만들기
+// 2. HTML 템플릿 만들기
+// 3. 템플릿 뿌리기 
 
 
 
-
-import { diceAnimation, disableElement, enableElement, getNode, getNodes, insertLast, invisibleElement, visibleElement } from './lib/index.js';
+import { attr, clearContents, diceAnimation, disableElement, enableElement, getNode, getNodes, insertLast, invisibleElement, visibleElement } from './lib/index.js';
 
 // (11) 배열의 구조 분해 할당
 const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
@@ -27,17 +29,25 @@ const resetButton = getNode('.buttonGroup > button:nth-child(3)'); */
 
 const recordListWrapper = getNode('.recordListWrapper')
 
+// 특정 대상의 속성값을 가져오거나 / 설정할 수 있는 함수
+
+let count = 0;
+let total = 0;
+
 function renderRecordListItem() {
+
+  let diceValue = attr('#cube', 'data-dice');
+
   let template = /* html */ `
   <tr>
-    <td>0</td>
-    <td>5</td>
-    <td>5</td>
+    <td>${++count}</td>
+    <td>${diceValue}</td>
+    <td>${total += +diceValue}</td>
   </tr> 
 `
   insertLast('.recordListWrapper tbody', template)
+  recordListWrapper.scrollTop = recordListWrapper.scrollHeight; // 스크롤 길이만큼 찍어줌, 알아서 스크롤바로 내려가는
 }
-
 
 
 
@@ -83,7 +93,11 @@ const handelRecord = () => {
 // (14)
 const handleReset = () => {
 
+  count = 0;
+  total = 0;
+
   invisibleElement(recordListWrapper)
+  clearContents('.recordListWrapper tbody')
 
 }
 

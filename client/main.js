@@ -1,1 +1,5 @@
-console.log('aa');
+
+
+import { diceAnimation } from "./lib/index.js";
+
+

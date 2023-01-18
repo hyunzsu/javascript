@@ -6,6 +6,10 @@
 4:complete // 완료
  */
 
+
+import { typeError } from "../error/typeError.js";
+
+
 // xhrData 함수 만들기 method, url
 // 아규먼트 받는 즉시 구조분해 할당
 export function xhrData({
@@ -18,7 +22,7 @@ export function xhrData({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*', // 에러방지
   },
-}) {
+} = {}) {
   // const {method, url, body} = options
   const xhr = new XMLHttpRequest();
 
@@ -60,11 +64,13 @@ export function xhrData({
   }
 }); */
 
+// shorthand property
+
 xhrData.get = (url, onSuccess, onFail) => {
   xhrData({
     url,
     onSuccess,
-    onFail,
+    onFail
   });
 };
 
@@ -74,7 +80,7 @@ xhrData.post = (url, body, onSuccess, onFail) => {
     body,
     url,
     onSuccess,
-    onFail,
+    onFail
   });
 };
 
@@ -84,7 +90,7 @@ xhrData.put = (url, body, onSuccess, onFail) => {
     body,
     url,
     onSuccess,
-    onFail,
+    onFail
   });
 };
 
@@ -93,29 +99,107 @@ xhrData.delete = (url, body, onSuccess, onFail) => {
     method: 'DELETE',
     url,
     onSuccess,
-    onFail,
+    onFail
   });
 };
 
-/* xhrData('POST', 'https://jsonplaceholder.typicode.com/users', {
-    "name": "kindtiger",
-    "username": "seonbeom",
-    "email": "tiger@april.biz",
-    "address": {
-      "street": "Kulas Light",
-      "suite": "Apt. 556",
-      "city": "Gwenborough",
-      "zipcode": "92998-3874",
-      "geo": {
-        "lat": "-37.3159",
-        "lng": "81.1496"
+
+
+
+
+
+// promise API
+// xhrData  -> promise
+
+const defaultOptions = {
+  url: '',
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+  },
+  body: null,
+};
+
+export function xhrPromise(options = {}) { // options의 기본값은 객체로 하겠다
+  const xhr = new XMLHttpRequest();
+
+  // {...defaultOptions, ...options};랑 Object.assign({}, defaultOptions, options);랑 같은 거, 얕복 후 구조분해할당
+  const { method, url, body, headers } = Object.assign({},defaultOptions,options); // {}는 새로운 객체를 만들겠다 {}에 다 때려박음
+
+  // if (!url) typeError('서버와 통신할 url 인자는 반드시 필요합니다.')
+
+  xhr.open(method, url);
+
+  xhr.send(body ? JSON.stringify(body) : null) // body가 있으면 ~, 없으면 null,  밑에거 대신
+
+  // xhr.send(body); // return 밑에 넣으면 종료니까 올려줌
+
+  return new Promise((resolve, reject) => {
+    xhr.addEventListener('readystatechange', () => {
+      const { status, readyState, response } = xhr;
+
+      if (status >= 200 && status < 400) {
+        if (readyState === 4) {
+          resolve(JSON.parse(response)); // onSuccess
+        } else {
+          reject('에러입니다.');
+        }
       }
-    },
-    "phone": "1-770-736-8031 x56442",
-    "website": "hildegard.org",
-    "company": {
-      "name": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    }
-  }); */
+    });
+  });
+}
+
+// 비동기통신에서 성공된 값을 가져와야 함
+// xhrPromise({
+//   url:'https://jsonplaceholder.typicode.com/users/1'
+// })
+// .then((res)=>{
+//   console.log(res);
+// })
+// .catch((err)=>{
+//   console.log(err);
+// })
+
+
+// promise 조금 더 쉽게 
+// 함수지만 객체로 활용할 수 있게
+
+xhrPromise.get = (url) => {
+  return xhrPromise({
+    url
+  })
+}
+
+xhrPromise.post = (url,body) => {
+  return xhrPromise({
+    url,
+    body,
+    method: 'POST'
+  })
+}
+
+xhrPromise.put = (url,body) => {
+  return xhrPromise({
+    url,
+    body,
+    method:'PUT'
+  })
+}
+
+// xhrPromise
+// .get('www.naver.com') // promise
+// .then((res)=>{
+//   console.log(res);
+// })
+// .catch((err)=>{
+//   // console.log(err);
+// })
+
+xhrPromise.delete = (url) => {
+  return xhrPromise({
+    url,
+    method:'DELETE'
+  })
+}
+

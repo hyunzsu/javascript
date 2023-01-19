@@ -1,18 +1,57 @@
-/* 
-body{
-  height: 100vh;
+/* body{
   display: flex;
   justify-content: center;
   align-items: center;
-} 
-*/
+  height: 100vh;  
+  
+} */
 
-h1 {
-  margin: 0;
+
+h1{
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  translate:-50% -50%;
   text-align: center;
-  /* translate(-50%, -50%) */
+  margin: 0;
+  
+} 
+
+
+
+.container{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+
+textarea{
+  border: 2px solid dodgerblue;
+  resize: none;
+  border-radius: 3px;
+  font-size: 1.2rem;
+}
+
+
+.buttons{
+  display: flex;
+  gap:1rem
+}
+
+input{
+  width: 100%;
+  background: dodgerblue;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+
+
+input[value="삭제"]{
+  background:rgb(255, 0, 183)
 }

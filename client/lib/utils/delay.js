@@ -4,7 +4,7 @@ import { isNumber, isObject } from "./typeOf.js";
 const first = getNode('.first');
 
 // js는 위에서 아래로 읽는데 같이 움직임, 콜백이 필요한 순간
-first.style.top = '-100px';
+// first.style.top = '-100px';
 // first.style.transform = 'rotate(360deg)';
 // first.style.top = '0px';
 

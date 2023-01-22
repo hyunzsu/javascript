@@ -109,7 +109,7 @@ xhrData.delete = (url, body, onSuccess, onFail) => {
 
 
 // promise API
-// xhrData  -> promise
+// xhrData  -> xhrPromise
 
 const defaultOptions = {
   url: '',
@@ -137,17 +137,17 @@ export function xhrPromise(options = {}) { // options의 기본값은 객체로 
 
   return new Promise((resolve, reject) => {
     xhr.addEventListener('readystatechange', () => {
-      const { status, readyState, response } = xhr;
+      const {status, readyState, response} = xhr; // 객체 구조 분해 할당
 
       if (status >= 200 && status < 400) {
-        if (readyState === 4) {
+        if(readyState === 4) {
           resolve(JSON.parse(response)); // onSuccess
-        } else {
-          reject('에러입니다.');
         }
+      } else {
+        reject('에러입니다.');
       }
-    });
-  });
+    })
+  })
 }
 
 // 비동기통신에서 성공된 값을 가져와야 함
